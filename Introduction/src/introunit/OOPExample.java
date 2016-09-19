@@ -14,9 +14,9 @@ public class OOPExample {
 	 */
 	public static void main(String[] args) {
 		//constructing a new student
-		Student jillian = new Senior("Jillian");//from class file student
-		Student jordan = new Student("Jordan");
-		Student jason = new Student("Jason");
+		Student jillian = new Senior("Jillian", "chef");//from class file student, Senior needs two parameters
+		Student jordan = new Sophomore("Jordan");
+		Student jason = new Freshman("Jason");
 		jillian.talk();
 		jordan.talk();
 		jason.talk();
