@@ -17,7 +17,7 @@ public class OOPExample {
 		Student jillian = new Senior("Jillian", "chef");//from class file student, Senior needs two parameters
 		Student jordan = new Sophomore("Jordan");
 		Student jason = new Freshman("Jason");
-		jillian.talk();
+		((Student)jillian).talk();
 		jordan.talk();
 		jason.talk();
 		}
