@@ -2,7 +2,7 @@ package introunit;
 
 public class Student {
 
-	private String name;
+	private String name; //encapsulation
 	
 	//constructor(no return type. it creates students)
 	public Student(String name){

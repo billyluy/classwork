@@ -1,8 +1,8 @@
 package introunit;
 
-public class Senior extends Student {
+public class Senior extends Student { //polymorphism
 
-	private String internship;
+	private String internship; //encapsulation
 	
 	public Senior(String name, String internship) {
 		super(name);

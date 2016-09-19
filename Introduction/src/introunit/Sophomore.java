@@ -7,7 +7,7 @@ public class Sophomore extends Student {
 		
 	}
 	public void talk(){
-		super.talk();
+		super.talk(); //inheritance
 		System.out.println("I am a Sophomore");
 	}
 	
