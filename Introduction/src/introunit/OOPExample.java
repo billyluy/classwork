@@ -18,6 +18,7 @@ public class OOPExample {
 		Student jordan = new Sophomore("Jordan");
 		Student jason = new Freshman("Jason");
 		jillian.talk();
+		//((Student)jillian).talk(); //sub class can't access superclass
 		//((Student)(jillian.super)).talk();
 		jordan.talk();
 		jason.talk();

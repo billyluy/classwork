@@ -20,12 +20,12 @@ public class DataTypes {
 		System.out.println("d3 : " + d3);  
 		System.out.println("d1 - d2 : " + (d1 - d2));
 		
-		//String s = 1; //string can't be a int
-		//System.out.println(s);
+		if(42 == 42.0) System.out.println("42 equals 42.0");
 		
-		//String s = (String)1;//string can't be a int & (string) is unknown
-		//System.out.println(s);
-		
+//		String s = 1; //string can't be a int
+//		System.out.println(s);
+//		String s = (String)1;//string can't be a int & (string) is unknown
+//		System.out.println(s);
 //		String s = "1";
 //		System.out.println(s);
 //		String s = ""+1;
@@ -42,10 +42,15 @@ public class DataTypes {
 //		int m = 22;
 //		int n = 7;
 //		System.out.println("m/n is "+(m/n));
-		
 		int m = 22;
 		int n = 7;
 		System.out.println("m/n is "+((double)m/n));
+		
+		String ten = "10";
+		String two = "2";
+		
+		if(ten.compareTo(two)>0)System.out.println("10 is greater than two"); //the 1 in 10 is earlier than the 2 in 2. the 0 is not looked at yet. so 1 is before 2 therefore 10 is before 2
+		else System.out.println("ten is not greater than two");
 	}
 
 }
