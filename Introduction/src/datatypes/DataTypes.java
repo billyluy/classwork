@@ -20,7 +20,7 @@ public class DataTypes {
 		System.out.println("d3 : " + d3);  
 		System.out.println("d1 - d2 : " + (d1 - d2));
 		
-		if(42 == 42.0) System.out.println("42 equals 42.0");
+		//if(42 == 42.0) System.out.println("42 equals 42.0");
 		
 //		String s = 1; //string can't be a int
 //		System.out.println(s);
