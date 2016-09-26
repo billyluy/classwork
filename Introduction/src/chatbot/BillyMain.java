@@ -30,7 +30,7 @@ public class BillyMain {
 				//promptInput();
 				print("Greetings, "+user+". How are you?");
 				response = getInput();
-				if (response.indexOf("good") >= 0){
+				if (findKeyword(response, "good", 0) >=0){
 					print("I'm so happy you're good");
 				}
 				else if(response.indexOf("school")>=0){
@@ -40,6 +40,32 @@ public class BillyMain {
 				else
 					print("Im sorry i dont understand you");
 			}
+		}
+
+		public static boolean findKeyword(String searchString, String key, int startIndex) {
+			String phrase = searchString.trim();//delete white space
+			//set all letters lowerCase
+			phrase = phrase.toLowerCase();
+			key = key.toLowerCase();
+			int psn = phrase.indexOf(key);
+			//keep checking for key word until context is found
+			while (psn>=0){
+				String before=" ";
+				String after = " ";
+				if(psn + key.length() <phrase.length()){ //checks if the key is at the end of the sentence
+					after = phrase.substring(psn + key.length(), psn + key.length()+1).toLowerCase();
+				}
+				if(psn>0){
+					before = phrase.substring(psn-1,psn).toLowerCase();
+				}
+				if(before.compareTo("a")<0 && after.compareTo("a")<0){
+					return true;
+				}
+				//if keyword is not found yet, check the rest of the string
+				psn = phrase.indexOf(key,psn+1);
+			}
+			
+			return false;
 		}
 
 		public static void promptInput() {
