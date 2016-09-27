@@ -9,6 +9,7 @@ public class BillyMain {
 		static boolean inLoop;
 		static String response;
 		static Topic school;
+		static Topic like;
 
 		public static void main(String[] args) {
 			createTopics();
@@ -30,10 +31,14 @@ public class BillyMain {
 				//promptInput();
 				print("Greetings, "+user+". How are you?");
 				response = getInput();
-				if (findKeyword(response, "good", 0) >=0){
+				if (findKeyword(response, "good", 0)>=0){
 					print("I'm so happy you're good");
 				}
-				else if(response.indexOf("school")>=0){
+				else if (findKeyword(response, "like", 0)>=0){
+					inLoop =false;//exits the loop
+					like.talk();
+				}
+				else if(findKeyword(response, "school", 0)>=0){
 					inLoop =false;//exits the loop
 					school.talk();//calls on the school class
 				}
@@ -42,30 +47,66 @@ public class BillyMain {
 			}
 		}
 
-		public static boolean findKeyword(String searchString, String key, int startIndex) {
-			String phrase = searchString.trim();//delete white space
+		public static int findKeyword(String searchString, String key, int startIndex) {
+			String phrase = searchString.trim();//deletes all the white space in the input
 			//set all letters lowerCase
 			phrase = phrase.toLowerCase();
 			key = key.toLowerCase();
-			int psn = phrase.indexOf(key);
+//			System.out.println("The phrase is " +phrase);
+//			System.out.println("The key is " +key);
+			int psn = phrase.indexOf(key); //finds the first position of keep word
+			
+//			System.out.println("The position is " +psn);
+			
 			//keep checking for key word until context is found
-			while (psn>=0){
+			while (psn>=0){ //only runs if the word is found
+				//checks to see if the key is isolated
 				String before=" ";
 				String after = " ";
-				if(psn + key.length() <phrase.length()){ //checks if the key is at the end of the sentence
-					after = phrase.substring(psn + key.length(), psn + key.length()+1).toLowerCase();
+				if(psn + key.length() <phrase.length()){ //checks the character after the key
+					//substring returns part of the string
+					after = phrase.substring(psn + key.length(), psn + key.length()+1);
 				}
-				if(psn>0){
-					before = phrase.substring(psn-1,psn).toLowerCase();
+				if(psn>0){ //checks the character before the key
+					before = phrase.substring(psn-1,psn);
 				}
 				if(before.compareTo("a")<0 && after.compareTo("a")<0){
-					return true;
+					if(noNegation(phrase, psn)){
+						return psn;
+					}
+					return -1;
 				}
 				//if keyword is not found yet, check the rest of the string
 				psn = phrase.indexOf(key,psn+1);
 			}
 			
-			return false;
+			return -1; //return -1 if word is not found
+		}
+		
+		/*"help method" a method that contributes functionality to another method
+		 * Make methods more readable
+		 * This method is private  because it's only used by the method it is helping
+		 */
+
+		private static boolean noNegation(String phrase, int index) {
+			//check for word "NO " - 3 characters long
+			//check to see if there is space for the word "NO " to be in front of index
+			if(index - 3 >= 0 && phrase.substring(index -3, index).equals("no ")){
+				return false;
+			}
+			//check for word "NOT " - 4 characters long
+			if(index - 4 >= 0 && phrase.substring(index -4, index).equals("not ")){
+				return false;
+			}
+			//check for word "NEVER  " - 6 characters long
+			if(index - 6 >= 0 && phrase.substring(index -6, index).equals("never ")){
+				return false;
+			}
+			//check for word "N'T  " - 4 characters long
+			if(index - 4 >= 0 && phrase.substring(index -4, index).equals("n't ")){
+				return false;
+			}
+			return true;
 		}
 
 		public static void promptInput() {
@@ -109,6 +150,7 @@ public class BillyMain {
 		public static void createTopics() {
 			input = new Scanner(System.in);//allows for user input
 			school = new School();
+			like = new BillyLike();
 
 		}
 
