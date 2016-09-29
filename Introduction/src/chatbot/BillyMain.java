@@ -10,6 +10,7 @@ public class BillyMain {
 		static String response;
 		static Topic school;
 		static Topic like;
+		static Topic hello;
 
 		public static void main(String[] args) {
 			createTopics();
@@ -34,11 +35,15 @@ public class BillyMain {
 				if (findKeyword(response, "good", 0)>=0){
 					print("I'm so happy you're good");
 				}
-				else if (findKeyword(response, "like", 0)>=0){
+				else if (like.isTriggered(response)){
 					inLoop =false;//exits the loop
 					like.talk();
 				}
-				else if(findKeyword(response, "school", 0)>=0){
+				else if (hello.isTriggered(response)){
+					inLoop =false;//exits the loop
+					hello.talk();
+				}
+				else if(school.isTriggered(response)){
 					inLoop =false;//exits the loop
 					school.talk();//calls on the school class
 				}
@@ -151,6 +156,7 @@ public class BillyMain {
 			input = new Scanner(System.in);//allows for user input
 			school = new School();
 			like = new BillyLike();
+			hello = new BillyHello();
 
 		}
 

@@ -19,4 +19,16 @@ public class School implements Topic {
 
 	}
 
+	public boolean isTriggered(String userInput) {
+		//String[] triggers = ("school", "class", "teacher", "grades");
+		//you can use a for loop to loop through a array
+		if(BillyMain.findKeyword(userInput, "school", 0)>=0){
+			return true;
+		}
+		if(BillyMain.findKeyword(userInput, "class", 0)>=0){
+			return true;
+		}
+		return false;
+	}
+
 }
