@@ -5,11 +5,30 @@ public class ArraysMain {
 	public static void main(String[] args) {
 		//this is how you time how quickly a computer processes
 		long startTime = System.currentTimeMillis();
-		arrayIntroMethod();
+		String[] someStrings = new String[100];
+		populateArray(someStrings);
+		changeString(someStrings[99]);
+		printArray(someStrings);
 		long endTime = System.currentTimeMillis();
 		System.out.println("Completed method in " + (endTime - startTime)+" milliseconds");
 	}
 	
+	private static void changeString(String s){
+		s = "this string has been changed";
+	}
+	
+	private static void printArray(String[] a) {
+		for(String s: a){
+			System.out.println(s);
+		}
+	}
+
+	private static void populateArray(String[] a) {
+		for(int i = 0; i < a.length;i++ ){
+			a[i] = "value "+(i+1);
+		}
+	}
+
 	public static void arrayIntroMethod(){
 		//construct 2 integer arrays
 		//these two do the same thing
@@ -37,9 +56,11 @@ public class ArraysMain {
 		String[] strings1 = {"","",""};
 		String[] strings2 = new String[3];
 		//bottom one fills with null not empty
-		for(String s: strings1){
-			System.out.println(s);
+		//this loop instantiates the strings
+		for(int i = 0; i < strings2.length;i++ ){
+			strings2[i] = "value "+(i+1);
 		}
+		//this loop prints the string
 		for(String s: strings2){
 			System.out.println(s);
 		}
