@@ -5,12 +5,50 @@ public class ArraysMain {
 	public static void main(String[] args) {
 		//this is how you time how quickly a computer processes
 		long startTime = System.currentTimeMillis();
-		String[] someStrings = new String[100];
-		populateArray(someStrings);
-		changeString(someStrings[99]);
-		printArray(someStrings);
+		
+		SampleElement sample = new SampleElement(10);
+		sample.increase();
+		System.out.println("The sample element has" + " a number equal to "+sample.getNumber());
+		
 		long endTime = System.currentTimeMillis();
 		System.out.println("Completed method in " + (endTime - startTime)+" milliseconds");
+	}
+	
+	private static void passByValueDemo(){
+		String[] someStrings = new String[100];
+		populateArray(someStrings);
+		
+		int ten = 10;
+		increase(ten);
+		System.out.println("TEn, increased is "+ten);
+		
+		//in this method, we pass the Element
+		//(a variable) not the array, so no change will be made
+		System.out.println("Before "+someStrings[99]);
+		changeString(someStrings[99]);
+		System.out.println("After \"changeString\" method" +someStrings[99]);
+		changeArray(someStrings);
+		System.out.println("After \"changeArray\" method" +someStrings[99]);
+		changeArrayElement(someStrings,99);
+		System.out.println("After \"changeArrayElement\" method" +someStrings[99]);
+	}
+	
+	private static void changeArrayElement(String[] someStrings, int i) {
+		someStrings[i] = "new item "+(i+1);
+		
+	}
+
+	private static void changeArray(String[] someStrings) {
+		someStrings = new String[100];
+		for (int i =0; i < someStrings.length; i++){
+			someStrings[i] = "new item "+(i+1);//only someStrings in this method(local) changes not the global variables
+		}
+		
+	}
+	
+	//this method does nothing since local variables dont last through the entire code
+	private static void increase(int x){
+		x = x+1;
 	}
 	
 	private static void changeString(String s){
