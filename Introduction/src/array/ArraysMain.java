@@ -20,7 +20,7 @@ public class ArraysMain {
 		
 		int ten = 10;
 		increase(ten);
-		System.out.println("TEn, increased is "+ten);
+		System.out.println("Ten, increased is "+ten);
 		
 		//in this method, we pass the Element
 		//(a variable) not the array, so no change will be made
@@ -46,7 +46,7 @@ public class ArraysMain {
 		
 	}
 	
-	//this method does nothing since local variables dont last through the entire code
+	//this method does nothing since local variables don't last through the entire code
 	private static void increase(int x){
 		x = x+1;
 	}
