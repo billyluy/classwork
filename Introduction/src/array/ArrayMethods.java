@@ -16,7 +16,7 @@ private static void swap(int[] arr, int i, int j) {
 /**
  *  Returns true if searchValue is less than the element
  *  halfway between begin and end
- * @param arr the int[] to be searched
+ * @param arr the int[] to be seached
  * @param i
  * @param j
  * @param length
