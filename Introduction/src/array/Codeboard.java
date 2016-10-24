@@ -98,6 +98,7 @@ public class Codeboard {
          * countDifferences({4,4,4,4},{1,2,3,4}) returns 3, since '4' is only at the same index ONE time and three others are not
          * countDifferences({1,2,3},{1,3,2}) returns 2, since '2' and '3' are both present, but different locations
          * 
+         * 
          * */
         int count = 0;
     	for(int i = 0; i<array1.length;i++){
