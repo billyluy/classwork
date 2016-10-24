@@ -67,8 +67,17 @@ public class Codeboard {
          * index 4 = the number of values greater than or equal to the mean
          * index 5 = the number of values below the mean
          * */
-         double[] stats = new double[6];
-         return stats;
+    	double sum =0;
+    	double largest = 0;
+    	for(int i =0; i < array.length; i++){
+    		sum += array[i];
+    		if(array[i]>array[i+1]){
+    			largest = array[i];
+    		}
+    	}
+    	double mean = sum/array.length;
+        double[] stats = new double[6];
+        return stats;
     }
     
     public static void reverseOrder(int[] array){
@@ -84,8 +93,11 @@ public class Codeboard {
          * array = {-6, 16, 10, 9, 1, 5}
          * 
          * */
-    	
-    	
+    	for(int i = 0; i < array.length / 2; i++){
+    	    int palceholder = array[i];
+    	    array[i] = array[array.length - i - 1];
+    	    array[array.length - i - 1] = palceholder;
+    	}
     }
     
     public static int countDifferences(int[] array1, int[] array2){
@@ -174,12 +186,14 @@ public class Codeboard {
          * CHALLENGE
          * For extra credit, make your method handle NEGATIVE n
          * */
-    	for(int i =0; i <n;i++){
-    		for(int j = array.length-1; j>-1; j--){
-    			int placeholder = array[j];
-    			array[i] = array[j];
-    			array[i] = placeholder;
-    		}
+    	int count=n;
+    	while(count>0){
+	    	for(int i=array.length-1; i>-1; i--){
+	    		int placeholder=array[i];
+		 		array[i]=array[0];
+		 		array[0]=placeholder;
+	    	}
+	    	count--;
     	}
     }
     
