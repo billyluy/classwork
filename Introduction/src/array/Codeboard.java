@@ -3,13 +3,6 @@ package array;
 public class Codeboard {
 
     public static void main(String[] args) {
-    	int[] array = {1,2,3,4,5,6};
-    	if(isSorted(array)){
-    		System.out.println("work");
-    	}
-    	else
-    		System.out.println("nope");
-    
      /**
       * IMPORTANT NOTE: 
       * This homework assignment will be weighted 4x.
