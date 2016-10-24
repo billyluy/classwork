@@ -3,6 +3,11 @@ package array;
 public class Codeboard {
 
     public static void main(String[] args) {
+    	int[] test ={3,7,4,2,8,6,2,9};
+    	cycleThrough(test, 49);
+    	for(int i =0; i<test.length;i++){
+    		System.out.println(test[i]);
+    	}
      /**
       * IMPORTANT NOTE: 
       * This homework assignment will be weighted 4x.
@@ -79,6 +84,8 @@ public class Codeboard {
          * array = {-6, 16, 10, 9, 1, 5}
          * 
          * */
+    	
+    	
     }
     
     public static int countDifferences(int[] array1, int[] array2){
@@ -166,6 +173,13 @@ public class Codeboard {
          * CHALLENGE
          * For extra credit, make your method handle NEGATIVE n
          * */
+    	for(int i =0; i <n;i++){
+    		for(int j = array.length-1; j>-1; j--){
+    			int placeholder = array[j];
+    			array[i] = array[j];
+    			array[i] = placeholder;
+    		}
+    	}
     }
     
 

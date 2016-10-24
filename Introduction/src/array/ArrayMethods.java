@@ -10,20 +10,20 @@ public class ArrayMethods {
 		print(arr);
 
 	}
-private static void print(int[] arr) {
+	private static void print(int[] arr) {
 		for(int i = 0; i < arr.length-1; i++){
 			System.out.print(arr[i] +", ");
 		}
 		System.out.println(arr[arr.length-1]);
 		
 	}
-private static void shuffle(int[] arr) {
+	private static void shuffle(int[] arr) {
 		for(int i= 0; i< arr.length; i++){
 			int random = (int)(Math.random()*arr.length);
 			swap(arr, i , random);
 		}
 	}
-private static void swap(int[] arr, int i, int j) {
+	private static void swap(int[] arr, int i, int j) {
 		int placeholder = arr[j];
 		arr[j] = arr[i];
 		arr[i] = placeholder;
