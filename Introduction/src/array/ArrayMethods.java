@@ -1,13 +1,19 @@
 package array;
 
+import java.util.Arrays;
+
 public class ArrayMethods {
 
 	public static void main(String[] args) {
-		int[] arr = {2,3,4,6,9,11,12,15};
-		checkHalfway(arr,12,0, arr.length-1);
-		swap(arr, 0, arr.length-1);
-		shuffle(arr);
-		print(arr);
+//		int[] arr = {2,3,4,6,9,11,12,15};
+//		checkHalfway(arr,12,0, arr.length-1);
+//		swap(arr, 0, arr.length-1);
+//		shuffle(arr);
+//		print(arr);
+		
+		int[] arr = {3,9,6,11,14,16};
+		int[] subArr = getSubArray(arr,2,4);
+		print(subArr);
 
 	}
 	private static void print(int[] arr) {
@@ -38,6 +44,34 @@ public class ArrayMethods {
 		}
 		return count;
 	}
+	
+	public static int[] getSubArray(int[] arr, int startIndex, int endIndex){
+		int[] subArray = new int[endIndex - startIndex +1];
+		for(int i =0; i<subArray.length;i++){
+			subArray[i] = arr[i+startIndex];
+		}
+		return subArray;
+	}
+	
+	public static boolean contains(int[] arr, int[] subArray){
+		for(int i=0; i< arr.length; i++){
+			if(arr[i] == subArray[0]){
+				int j = 0;
+				while(j<subArray.length){
+					if(subArray[j] == arr[i+j] && j == subArray.length-1){
+						return true;
+					}
+					else if(subArray[j] != arr[i]){
+						break;
+					}
+					j++;
+				}
+			}
+		}
+		return false;
+	}
+	
+	
 /**
  *  Returns true if searchValue is less than the element
  *  halfway between begin and end

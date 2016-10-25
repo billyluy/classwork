@@ -3,8 +3,13 @@ package array;
 public class Codeboard {
 
     public static void main(String[] args) {
-    	int[] test ={3,7,4,2,8,6,2,9};
-    	cycleThrough(test, 49);
+//    	int[] test ={3,7,4,2,8,6,2,9};
+//    	cycleThrough(test, 49);
+//    	for(int i =0; i<test.length;i++){
+//    		System.out.println(test[i]);
+//    	}
+    	double[] doubleTest = {9.0,2.0,11.0,1.0,13.0,19.0,4.0};
+    	double[] test = getStats(doubleTest);
     	for(int i =0; i<test.length;i++){
     		System.out.println(test[i]);
     	}
@@ -67,16 +72,73 @@ public class Codeboard {
          * index 4 = the number of values greater than or equal to the mean
          * index 5 = the number of values below the mean
          * */
+//    	for(int i =0; i < array.length; i++){
+//    		sum += array[i];
+//    		if(array[i]>largest){
+//    			largest = array[i];
+//    		}
+//    		if(array[i]<smallest){
+//    			smallest = array[i];
+//    		}
+//    	}
+//    	double mean = sum/array.length;
+//    	int countGreater =0;
+//    	int countLess =0;
+//    	for(int i=0;i<array.length;i++){
+//    		if(array[i]>=mean){
+//    			countGreater++;
+//    		}
+//    		else
+//    			countLess++;
+//    	}
+    	double[] stats = new double[6]; //0,0,0,0,0,0,
+    	for (int i = 0; i < array.length - 1; i++){
+    	    int tempLowIndex = i;
+    	    for (int j = i + 1; j < array.length; j++){
+    	        if (array[j] < array[tempLowIndex]){
+    	            tempLowIndex = j;
+    	        }
+    	    }
+    	   if(tempLowIndex!=i){
+    	         double placeholder = array[i];
+    	         array[i] = array[tempLowIndex];
+    	         array[tempLowIndex] = placeholder;
+    	   } 
+    	}
+    	
     	double sum =0;
-    	double largest = 0;
+    	double largest = array[0];
+    	double smallest = array[0];
+    	
     	for(int i =0; i < array.length; i++){
     		sum += array[i];
-    		if(array[i]>array[i+1]){
-    			largest = array[i];
-    		}
     	}
     	double mean = sum/array.length;
-        double[] stats = new double[6];
+    	
+    	int countGreater =0;
+    	int countLess =0;
+    	
+    	for(int i=0;i<array.length;i++){
+    		if(array[i]>=mean){
+    			countGreater++;
+    		}
+    		else
+    			countLess++;
+    	}
+    	double median = 0;
+    	if(array.length%2 == 0){
+    		double midOne =array[(int)((array.length)/2)-1];
+    		double midTwo =array[(int)(array.length)/2];
+    		median = (midOne + midTwo)/2;
+    	}
+    	else
+    		median = array[(int)(array.length)/2];
+        stats[0] = mean;
+        stats[1] = array[array.length-1];
+        stats[2] = array[0];
+        stats[3] = median;
+        stats[4] = countGreater;
+        stats[5] = countLess;
         return stats;
     }
     
