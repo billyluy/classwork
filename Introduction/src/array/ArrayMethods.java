@@ -28,11 +28,7 @@ public class ArrayMethods {
 		arr[j] = arr[i];
 		arr[i] = placeholder;
 	}
-/**
- * returns number of elements in arr less than d	
- * @param arr
- * @param d
- */
+	//return number of elements less than d
 	public static int countUnderBound(double[] arr, double d){
 		int count = 0;
 		for(int i=0; i<arr.length;i++){
