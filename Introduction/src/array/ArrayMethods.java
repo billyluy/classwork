@@ -29,6 +29,19 @@ public class ArrayMethods {
 		arr[i] = placeholder;
 	}
 /**
+ * returns number of elements in arr less than d	
+ * @param arr
+ * @param d
+ */
+	public static int countUnderBound(double[] arr, double d){
+		int count = 0;
+		for(int i=0; i<arr.length;i++){
+			if(arr[i]<d)
+				count++;
+		}
+		return count;
+	}
+/**
  *  Returns true if searchValue is less than the element
  *  halfway between begin and end
  * @param arr the int[] to be seached
