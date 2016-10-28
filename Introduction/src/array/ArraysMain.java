@@ -24,14 +24,17 @@ public class ArraysMain {
 		}
 		theNumbers[0] =false;
 		theNumbers[1] =false;
-		int increase =2;
-		boolean first = true;
-		for(int test =2;test< numberToTest; test += increase ){
-			 if(!first){
-				 theNumbers[test] = false;
-			 }
-			 else
-				 first = false;
+		for(int prime =2; prime <=lastToCheck; prime++){
+			//only check numbers that haven't been crossed off yet
+			if(theNumbers[prime]){
+				System.out.println("\n"+ prime+" is prime. Crossing off:");
+				//check all multiplies of test
+				//test = prime +prime b/c the first number will always be prime so check next multiple
+				for(int test = prime + prime ;test< numberToTest; test += prime ){
+					System.out.print(test+", ");
+					theNumbers[test] = false;
+				}
+			}
 		}
 		for(int i =0; i<theNumbers.length; i++){
 			if(theNumbers[i]){
