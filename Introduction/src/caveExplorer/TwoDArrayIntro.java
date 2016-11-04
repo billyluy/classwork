@@ -28,19 +28,49 @@ public class TwoDArrayIntro {
 	}
 
 	private static String countAdjacent(boolean[][] mines, int r, int c) {
-		//r and c represent coordinates of element we are providing a string for
+//		//r and c represent coordinates of element we are providing a string for
 		int count =0;
-		//loop from row above to below
-		for(int row = r-1;row <= r+1;row++){
-			//loop from col left to right
-			for(int col=c-1;col<=c+1;col++){
-				//makes sure there is no out of bound
-				if(row != r && col != c){
-					if(row>=0 && row <mines.length&& col >= 0 && col < mines[0].length)
-				}
-			}
+//		//only checks 9 elements
+//		//loop from row above to below
+//		for(int row = r-1;row <= r+1;row++){
+//			//loop from col left to right
+//			for(int col=c-1;col<=c+1;col++){
+//				//makes sure there is no out of bound
+//				if(row != r && col != c){
+//					if(row>=0 && row <mines.length&& col >= 0 && col < mines[row].length);
+//				}
+//			}
+//		}
+		
+		//this method only checks elements in the [][]
+		//so it is not necessary to verify they are valid
+		
+		//checks all values in the array
+//		for(int row =0; row<mines.length; row++){
+//			for(int col =0; col<mines[row].length;col++){
+//				//checks for all [row][col] that are 1 away from it && if there is a mine there then the count adds
+//				if(Math.abs(row-r)+Math.abs(col-c) ==1 && mines[row][col]){
+//					count++;
+//				}
+//				
+//			}
+//		}
+		
+		//specific method
+		count+= validAndTrue(mines, r-1, c);
+		count+= validAndTrue(mines, r+1, c);
+		count+= validAndTrue(mines, r, c-1);
+		count+= validAndTrue(mines, r, c+1);
+		
+		return count + "";
+	}
+
+	private static int validAndTrue(boolean[][] mines, int i, int j) {
+		if(i>= 0 && i<mines.length && j>=0 && j<mines[0].length && mines[i][j]){
+			return 1;
 		}
-		return null;
+		else
+			return 0;
 	}
 
 	private static void createMine(boolean[][] mines, int numberOfMines) {
