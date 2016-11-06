@@ -12,8 +12,38 @@ public class ArraysMain {
 		
 		long endTime = System.currentTimeMillis();
 		System.out.println("Completed method in " + (endTime - startTime)+" milliseconds");
+		
+		testPrimes(50);
 	}
 	
+	private static void testPrimes(int numberToTest) {
+		int lastToCheck =(int)(Math.sqrt(numberToTest));
+		boolean[] theNumbers = new boolean[numberToTest];
+		for(int i=0; i< numberToTest; i++){
+			theNumbers[i]=true;
+		}
+		theNumbers[0] =false;
+		theNumbers[1] =false;
+		for(int prime =2; prime <=lastToCheck; prime++){
+			//only check numbers that haven't been crossed off yet
+			if(theNumbers[prime]){
+				System.out.println("\n"+ prime+" is prime. Crossing off:");
+				//check all multiplies of test
+				//test = prime +prime b/c the first number will always be prime so check next multiple
+				for(int test = prime + prime ;test< numberToTest; test += prime ){
+					System.out.print(test+", ");
+					theNumbers[test] = false;
+				}
+			}
+		}
+		for(int i =0; i<theNumbers.length; i++){
+			if(theNumbers[i]){
+				System.out.println(i+" is prime");
+			}
+		}
+		
+	}
+
 	private static void passByValueDemo(){
 		String[] someStrings = new String[100];
 		populateArray(someStrings);

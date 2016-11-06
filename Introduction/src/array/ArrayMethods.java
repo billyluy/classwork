@@ -71,6 +71,26 @@ public class ArrayMethods {
 		return false;
 	}
 	
+	public static int searchUnsorted(int[] arrayToSearch, int key){
+		for(int i = 0; i<arrayToSearch.length; i++){
+			if(arrayToSearch[i] == key){
+		    	return i;
+		    }
+		}
+		return -1;
+	}
+	
+	public static void pickRand(int[] arr){
+		int[] randArr = new int[arr.length-1];
+		for(int i=0; i< randArr.length;i++){
+			int number = arr[(int)(Math.random()*arr.length)];
+			while(searchUnsorted(randArr, number)> -1){
+				number = arr[(int)(Math.random()*arr.length)];
+			}
+			randArr[i] = number;
+		}
+	}
+	
 	
 /**
  *  Returns true if searchValue is less than the element
