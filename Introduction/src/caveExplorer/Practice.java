@@ -13,6 +13,7 @@ public class Practice {
 	public static void main(String[] args){
 //		String[][] arr = new String[6][6];
 //		makeMap(arr);
+		print(6,6,0,0);
 		
 		arr2D = new String[5][4];
 		pic = new String[5][4];
@@ -21,8 +22,11 @@ public class Practice {
 				arr2D[row][col] = "("+row+","+col+")";
 			}
 		}
-		
-		
+		for(int row =0; row < pic.length; row++){
+			for(int col =0; col<pic[row].length; col++){
+				pic[row][col] = " ";
+			}
+		}
 		
 		i=2;
 		j=3;
@@ -32,7 +36,6 @@ public class Practice {
 	
 	private static void startExploring() {
 		while(true){
-			
 			printPic(pic);
 			System.out.println("you are in room"+arr2D[i][j]);
 			System.out.println("What do you want to do?");
@@ -46,8 +49,8 @@ public class Practice {
 					pic[row][col] = " ";
 				}
 			}
-			pic[i][j]="X";
 			interpretInput(input.toLowerCase());
+			pic[i][j]="X";
 		}
 		
 	}
@@ -78,16 +81,26 @@ public class Practice {
 		return false;
 	}
 
-	public static void makeMap(String[][] arr){
-		for(int r =0; r<arr.length;r++){
-			for(int c=0; c <arr[0].length;c++){
-				System.out.print("|");
-			}
+	public static void print(int roomsX, int roomsY, int posX, int posY) {
+		for (int j = 0; j != roomsX; j++) {
+			System.out.print("____");
 		}
-		
-		for(int r =0; r<arr.length;r+=2){
-			for(int c=0; c <arr[0].length;c++){
-				System.out.print("__");
+		System.out.println();
+
+		for (int i = 0; i != roomsY; i++) {
+			for (int j = 3; j > 0; j--) {
+				for (int k = 0; k != roomsX; k++) {
+					if (j == 1) {
+						System.out.print("|___");
+					} else {
+						if (j == 2 && i == posX && k == posY) {
+							System.out.print("| X ");
+						} else {
+							System.out.print("|   ");
+						}
+					}
+				}
+				System.out.println("|");
 			}
 		}
 	}
