@@ -3,16 +3,10 @@ package array;
 public class Codeboard {
 
     public static void main(String[] args) {
-//    	int[] test ={3,7,4,2,8,6,2,9};
-//    	cycleThrough(test, 49);
-//    	for(int i =0; i<test.length;i++){
-//    		System.out.println(test[i]);
-//    	}
-    	double[] doubleTest = {9.0,2.0,11.0,1.0,13.0,19.0,4.0};
-    	double[] test = getStats(doubleTest);
-    	for(int i =0; i<test.length;i++){
-    		System.out.println(test[i]);
-    	}
+    	int[] test ={9,6,3,4,3,8,9};
+    	int[] test2 ={9,6,3,4,3,6,7};
+    	System.out.println(longestSharedSequence(test, test2));
+    	
      /**
       * IMPORTANT NOTE: 
       * This homework assignment will be weighted 4x.
@@ -38,14 +32,29 @@ public class Codeboard {
     }
     
     public static int searchSorted(int[] sortedArrayToSearch, int key){
-    /**
-     * this method is exactly like the one above, except the parameter sortedArrayToSearch will
-     * always be sorted in DESCENDING order. Again return the index of the key or return -1
-     * if the key is not in the array
-     * 
-     * Note: You should attempt to write a method that is more efficient that searchUnsorted
-     * */
-     return -1;
+    	/**
+    	 * this method is exactly like the one above, except the parameter sortedArrayToSearch will
+    	 * always be sorted in DESCENDING order. Again return the index of the key or return -1
+    	 * if the key is not in the array
+    	 * 
+    	 * Note: You should attempt to write a method that is more efficient that searchUnsorted
+    	 * */
+        
+        int start=0;
+		int end=sortedArrayToSearch.length-1;
+		while(start<=end){
+			int middleIndex=(start+end)/2;
+			if(sortedArrayToSearch[middleIndex]==key){
+				return middleIndex;
+			}
+			else if(sortedArrayToSearch[middleIndex]>key){
+				start=middleIndex+1;
+			}
+			else if(sortedArrayToSearch[middleIndex]<key){
+				end=middleIndex-1;
+			}
+		}
+		return -1;
     }
     
     public static boolean isSorted(int[] array){
@@ -107,8 +116,6 @@ public class Codeboard {
     	}
     	
     	double sum =0;
-    	double largest = array[0];
-    	double smallest = array[0];
     	
     	for(int i =0; i < array.length; i++){
     		sum += array[i];
@@ -194,8 +201,20 @@ public class Codeboard {
          * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
          * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
          * */
-        
-        return 0;
+    	int count = 0;
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = i + 1; j < array1.length; j++) {
+                if ((array1[j] - array1[j - 1]) == 1) {
+                    if (j - i > count) {
+                    	count = j - i;
+                    }
+                } 
+                else {
+                    break;
+                }
+            }
+        }
+        return count + 1;
     }
 
     public static int longestSharedSequence(int[] array1, int[] array2){
@@ -209,8 +228,33 @@ public class Codeboard {
          *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
          * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
          * */
-        
-        return 0;
+    	
+    	int countLong=0;
+        int countShare=0;
+        for(int i=0;i<array1.length;i++){
+        	int temp=0;
+        	for(int j=0;j<array2.length;j++){
+        		if(array2[j]==array1[i+temp]){
+        			countShare++;
+        			temp++;
+        		}else if(countShare>countLong){
+        			countLong=countShare;
+        			countShare=0;
+        			temp=0;
+        		}else{
+        			countShare=0;
+        			temp=0;
+        		}
+        		if(i+temp==array1.length){
+        			break;
+        		}
+        	}
+        	if(countShare>countLong){
+        		countLong=countShare;
+    		}
+        	countShare=0;
+        }
+        return countLong;
     }
 
     public static int[] generateDistinctItemsList(int n){
@@ -221,7 +265,20 @@ public class Codeboard {
          * contains only entries between 1 and 2n (inclusive) and has no duplicates
          * 
          * */
-        return null; 
+    	boolean[] usedNums = new boolean[2*n]; //false array w/ 2n
+        int[] distinctNums = new int[n]; //0 array w/ n
+        for(int i =0; i<n; i++){
+        	boolean inLoop = true;
+            while(inLoop){
+            	int randNum = (int)(Math.random()*(2*n))+1;
+                if(usedNums[randNum-1] == false){
+                    distinctNums[i] = randNum;
+                    usedNums[randNum-1] = true;
+                    inLoop = false;
+                }
+            }
+        }
+        return distinctNums;
     }
     
     
