@@ -13,7 +13,7 @@ public class Practice {
 	public static void main(String[] args){
 //		String[][] arr = new String[6][6];
 //		makeMap(arr);
-		print(6,6,0,0);
+		print(6,6);
 		
 		arr2D = new String[5][4];
 		pic = new String[5][4];
@@ -81,7 +81,7 @@ public class Practice {
 		return false;
 	}
 
-	public static void print(int roomsX, int roomsY, int posX, int posY) {
+	public static void print(int roomsX, int roomsY) {
 		for (int j = 0; j != roomsX; j++) {
 			System.out.print("____");
 		}
@@ -93,11 +93,7 @@ public class Practice {
 					if (j == 1) {
 						System.out.print("|___");
 					} else {
-						if (j == 2 && i == posX && k == posY) {
-							System.out.print("| X ");
-						} else {
-							System.out.print("|   ");
-						}
+						System.out.print("|   ");
 					}
 				}
 				System.out.println("|");
