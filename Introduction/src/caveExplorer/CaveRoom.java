@@ -124,11 +124,16 @@ public class CaveRoom {
 				break;
 			}
 		}
-		if(borderingRooms[indexFound] != null && doors[indexFound].isOpen()){
+		goToRoom(indexFound);
+	}
+	
+	public void goToRoom(int direction){
+		//MOVING INTO A NEW ROOM
+		if(borderingRooms[direction] != null && doors[direction].isOpen()){
 			//leave current room
 			CaveExplorer.currentRoom.leave();
 			//go to NEW room
-			CaveExplorer.currentRoom = borderingRooms[indexFound];
+			CaveExplorer.currentRoom = borderingRooms[direction];
 			//enter NEW room
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();

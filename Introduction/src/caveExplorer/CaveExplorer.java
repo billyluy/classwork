@@ -17,6 +17,8 @@ public class CaveExplorer {
 				caves[row][col] = new CaveRoom("This cave has coordinates"+row+","+col);
 			}
 		}
+		//ADD EVENT ROOMS
+		caves[0][2] = new EventRoom("This is the room where that guy with a tail met you", new GameStartEvent());
 		currentRoom = caves[0][1];
 		currentRoom.enter();
 		//[0][1] is connected to [0][2]
@@ -38,5 +40,7 @@ public class CaveExplorer {
 		}
 	}
 	
-	
+	public static void print(String string){
+		System.out.println(string);
+	}
 }
