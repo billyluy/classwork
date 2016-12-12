@@ -5,12 +5,20 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
-public class Screen {
+public abstract class Screen {
 	
 	private BufferedImage image;
 	
 	public Screen(int width, int height){
 		initImage(width, height);
+	}
+	
+	public int getWidth(){
+		return image.getWidth();
+	}
+	
+	public int getHeight(){
+		return image.getHeight();
 	}
 
 	public void initImage(int width, int height) {
@@ -29,9 +37,9 @@ public class Screen {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, image.getWidth(), image.getHeight());
 		//setting a "brush" color to use
-		g.setColor(Color.pink);
-		g.drawString("blackpink", 40, 100);
-		g.drawOval(20, 70, 100, 50);
+//		g.setColor(Color.pink);
+//		g.drawString("blackpink", 40, 100);
+//		g.drawOval(20, 70, 100, 50);
 	}
 
 }
