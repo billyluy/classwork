@@ -49,7 +49,7 @@ public abstract class Component implements Visible {
 		update(image.createGraphics());
 	}
 	
-	public abstract void update(Graphics2D g);
+	public abstract void update(Graphics2D g); //Different for every class
 	
 	public Graphics2D clear(){
 		image = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);

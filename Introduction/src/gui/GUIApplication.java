@@ -29,9 +29,5 @@ public abstract class GUIApplication extends JFrame{
 	public void setScreen(Screen s){
 		currentScreen = s;
 	}
-	
-	public static void main(String[] args){
-		new MouseFollower(800,600);
-	}
 
 }
