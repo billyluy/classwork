@@ -1,6 +1,8 @@
 package gui.Screens;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import gui.Screen;
@@ -9,7 +11,10 @@ import gui.components.Button;
 import gui.components.TextLabel;
 import gui.components.Visible;
 
-public class CoordinateScreen extends Screen {
+public class CoordinateScreen extends Screen implements MouseMotionListener{
+	
+	private TextLabel text;
+	private Button button;
 
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -17,15 +22,29 @@ public class CoordinateScreen extends Screen {
 	}
 
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		TextLabel text = new TextLabel(20, 200, 500, 40, "Some text");
+		text = new TextLabel(20, 200, 500, 40, "Some text");
 		viewObjects.add(text);
 		
-		Button button = new Button(40,50,100,30,"Button",new Color(0,76,153), new Action(){
+		button = new Button(40,50,100,30,"Button",new Color(255,255,255), new Action(){
 			public void act(){
 				//code for action will be in here.
 			}
 		});
 		viewObjects.add(button);
+	}
+
+	public void mouseDragged(MouseEvent e) {
+		
+	}
+
+	public void mouseMoved(MouseEvent e) {
+		int mx = e.getX();//get mouse x coord
+		int my = e.getY();//get mouse y coord
+		text.setText("Mouse at: "+mx+" + "+my);
+	}
+	
+	public MouseMotionListener getMouseMotionListener(){
+		return this;
 	}
 
 }
