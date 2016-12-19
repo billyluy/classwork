@@ -14,9 +14,28 @@ public class TextArea extends TextLabel {
 	
 	@Override
 	public void update(Graphics2D g) {
+		if(getText() == null){
+			return;
+		}
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		FontMetrics fm = g.getFontMetrics();
-		String[] words = getText().split(" ");//splits word at every space	 
+		FontMetrics fm = g.getFontMetrics();//width of pixel
+		String[] words = getText().split(" ");//splits word at every space
+		int widthLimit = getWidth();
+		int heightLimit = getHeight();
+		int tempH = 0;
+		int tempW = 0;
+		String line = "";
+		for(String w : words){
+			if((tempW + fm.stringWidth(w)) < widthLimit){
+				line += w;
+				tempW += fm.stringWidth(w);
+			}
+			else if((tempH + fm.getHeight()+fm.getDescent())<heightLimit){
+				line += "\n" + w;
+			}
+			else break;
+		}
+		setText(line);
 	}
 
 }
