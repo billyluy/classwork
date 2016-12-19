@@ -32,10 +32,11 @@ public class TextArea extends TextLabel {
 			}
 			else if((tempH + fm.getHeight()+fm.getDescent())<heightLimit){
 				line += "\n" + w;
+				//g.drawString(text, 4, getHeight()-5);
 			}
 			else break;
 		}
-		setText(line);
+		//setText(line);
 	}
 
 }
