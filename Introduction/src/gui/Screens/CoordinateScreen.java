@@ -2,19 +2,25 @@ package gui.Screens;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import GUISampleGame.MouseFollower;
 import gui.Screen;
 import gui.components.Action;
 import gui.components.Button;
+import gui.components.Graphic;
 import gui.components.TextArea;
 import gui.components.TextLabel;
 import gui.components.Visible;
 
-public class CoordinateScreen extends Screen implements MouseMotionListener{
+public class CoordinateScreen extends Screen implements MouseMotionListener, MouseListener{
 	
-	private TextArea text;
+	//FIELDS
+	private Graphic thug;
+	private TextArea area;
+	private TextLabel text;
 	private Button button;
 
 	public CoordinateScreen(int width, int height) {
@@ -23,15 +29,21 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 	}
 
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		text = new TextArea(20, 200, 500, 40, "Some text that is very very very long");
+		area = new TextArea(20, 200, 200, 100, "Some text that is very very very long");
+		viewObjects.add(area);
+		
+		text = new TextLabel(20, 100, 500, 100, "Some text that is very very very long");
 		viewObjects.add(text);
 		
-		button = new Button(40,50,100,30,"Button",new Color(255,255,255), new Action(){
+		new Button(40,50,100,30,"Button",new Color(0,76,153), new Action(){
 			public void act(){
-				//code for action will be in here.
+				MouseFollower.game.setScreen(MouseFollower.myScreen);
 			}
 		});
 		viewObjects.add(button);
+		
+		thug = new Graphic(30,30,100,100,"resources/sampleImages/Crashthug.jpg");
+		viewObjects.add(thug);
 	}
 
 	public void mouseDragged(MouseEvent e) {
@@ -46,6 +58,41 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 	
 	public MouseMotionListener getMouseMotionListener(){
 		return this;
+	}
+	
+	public MouseListener getMouseListener(){
+		return this;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(button.isHovered(e.getX(), e.getY())){
+			button.act();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
