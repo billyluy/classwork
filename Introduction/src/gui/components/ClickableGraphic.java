@@ -30,5 +30,13 @@ public class ClickableGraphic extends Graphic implements Clickable{
 			action.act();
 		}
 	}
+	
+	public Action getAction(){
+		return action;
+	}
+	
+	public void setAction(Action a){
+		this.action = a;
+	}
 
 }
