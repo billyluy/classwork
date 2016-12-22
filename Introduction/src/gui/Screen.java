@@ -39,16 +39,15 @@ public abstract class Screen {
 	public BufferedImage getImage(){
 		return image;
 	}
-
+	
 	public void update() {
 		Graphics2D g = image.createGraphics();
 		//smooth graphics
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.white);
 		g.fillRect(0, 0, image.getWidth(), image.getHeight());
-		g.setColor(Color.black);
 //		//setting a "brush" color to use
-//		g.setColor(Color.pink);
+		g.setColor(Color.black);
 //		g.drawString("blackpink", 40, 100);
 //		g.drawOval(20, 70, 100, 50);
 //		for(int i =0; i <viewObjects.size(); i++){

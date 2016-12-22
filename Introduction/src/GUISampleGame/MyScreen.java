@@ -8,17 +8,16 @@ import gui.components.Visible;
 
 public class MyScreen extends Screen {
 	
-	private Graphic thug;
+	private Graphic boo;
 
-	public MyScreen() {
-		// TODO Auto-generated constructor stub
-		super(500, 500);
+	public MyScreen(int width,int height){
+		super(width,height);
 	}
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		thug = new Graphic(30,30,100,100,"resources/sampleImages/Crashthug.jpg");
-		viewObjects.add(thug);
+		boo = new Graphic(30,30,100,100,"resources/sampleImages/Boo_Island_Tour.png");
+		viewObjects.add(boo);
 	}
 
 }

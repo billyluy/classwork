@@ -29,21 +29,23 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 	}
 
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		area = new TextArea(20, 200, 200, 100, "Some text that is very very very long");
-		viewObjects.add(area);
-		
 		text = new TextLabel(20, 100, 500, 100, "Some text that is very very very long");
 		viewObjects.add(text);
 		
-		new Button(40,50,100,30,"Button",new Color(0,76,153), new Action(){
+		button = new Button(40,50,100,30,"Button",new Color(0,76,153), new Action(){
 			public void act(){
 				MouseFollower.game.setScreen(MouseFollower.myScreen);
 			}
 		});
 		viewObjects.add(button);
 		
-		thug = new Graphic(30,30,100,100,"resources/sampleImages/Crashthug.jpg");
-		viewObjects.add(thug);
+//		
+//		area = new TextArea(20, 200, 200, 100, "Some text that is very very very long");
+//		viewObjects.add(area);
+//		
+//		
+//		thug = new Graphic(30,30,100,100,"resources/sampleImages/Crashthug.jpg");
+//		viewObjects.add(thug);
 	}
 
 	public void mouseDragged(MouseEvent e) {
