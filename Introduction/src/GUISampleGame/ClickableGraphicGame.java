@@ -14,21 +14,20 @@ import gui.components.Visible;
 public class ClickableGraphicGame extends GUIApplication {
 	
 	public static ClickableGraphicGame game; //only one exits
-	public static ClickableGraphic boo;
-	public static MyScreen myScreen;
+	public static ClickableGraphicScreen cgs;
 
 	public ClickableGraphicGame(int width, int height) {
 		super(width, height);
 	}
 	
+	@Override
 	public void initScreen(){
-		boo = new ClickableGraphic(getWidth(), getHeight(), "resources/sampleImages/Boo_Island_Tour.png");
-		setScreen(boo);
-		myScreen = new MyScreen(getWidth(), getHeight());
+		cgs = new ClickableGraphicScreen(getWidth(), getHeight());
+		setScreen(cgs);
 	}
 
 	public static void main(String[] args) {
-		game = new ClickableGraphicGame(500,500);
+		game = new ClickableGraphicGame(800,600);
 		Thread app = new Thread(game);
 		app.start();
 	}

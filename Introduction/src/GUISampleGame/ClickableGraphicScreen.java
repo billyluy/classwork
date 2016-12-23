@@ -18,18 +18,28 @@ public class ClickableGraphicScreen extends Screen implements MouseMotionListene
 
 	public ClickableGraphicScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		boo = new ClickableGraphic(200,200,"resources/sampleImages/Boo_Island_Tour.png"){
-			public void act(){
-				ClickableGraphicGame.game.setScreen(MouseFollower.myScreen);
-			}
-		};
+		boo = new ClickableGraphic(10, 10,.1, "resources/sampleImages/Boo.png");
+		
+		boo.setAction(new Action() {
+			@Override
+			public void act() {
+				boo.setX(boo.getX()+10);
+				boo.setY(boo.getY()+10);
+			}		
+		});
 		viewObjects.add(boo);
-
+	}
+	
+	public MouseListener getMouseListener() {
+		return this;
+	}
+	
+	public MouseMotionListener getMouseMotionListener() {
+		return this;
 	}
 
 	@Override
