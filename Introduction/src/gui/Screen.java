@@ -53,7 +53,8 @@ public abstract class Screen {
 //		for(int i =0; i <viewObjects.size(); i++){
 //			
 //		}
-		for(Visible v: viewObjects){
+		for(int i =0; i<viewObjects.size();i++){
+			Visible v = viewObjects.get(i);
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
 	}
@@ -71,7 +72,74 @@ public abstract class Screen {
 	}
 	
 	public void remove(Visible v){
+		/**
+		 * NOTE: in this implementation, we have a very simple command: remove(v)
+		 * however, remove is sorta a big deal on the AP Exam here's why:
+		 * 
+		 * When an object is removed from a list, every other object after that object is moved up in order.
+		 * Therefore, all of their respective indices change. You MUST be aware of this.
+		 * 
+		 * Here is a classic example, the following is wrong:
+		 * Suppose you have a List<Integer> with {4,8,7,1}
+		 * and you want to remove all integers greater than 5, you do this:
+		 * for(int i=0;i< list.size();i++){
+		 * 		if(list.get(i)>5){
+		 * 			list.remove(i);
+		 * 		}
+		 * }
+		 * WRONGGGG!
+		 * 
+		 * Why do you fail?
+		 * i=0, nothing changes
+		 * i=1, 8 is removed (now we have: {4,7,1})
+		 * i=2, nothing changes
+		 * i=3, exit the for loop
+		 * 
+		 * Now we have:
+		 * {4,7,1} 7 is still there
+		 * 
+		 * These TWO ways are CORRECT:
+		 * 
+		 * for(int i=0;i< list.size();i++){
+		 * 		while(list.get(i)>5){
+		 * 			list.remove(i);
+		 * 		}
+		 * }
+		 * 
+		 * for(int i=0;i< list.size();i++){
+		 * 		if(list.get(i)>5){
+		 * 			list.remove(i);
+		 * 			i--;//compensate for i++
+		 * 		}
+		 * }
+		 * 
+		 * for the same reason, this doesn't even work
+		 * (BECAUSE THE SIZE CAN BE CHANGED)
+		 * for(Integer i : list){
+		 * 		if(i>5){
+		 * 			list.remove(i)'
+		 * 		}
+		 * }
+		 * 
+		 * If you call list.remove(int) it will return the object being removed at that index 
+		 * so you could do something like this:
+		 * System.out.println(list.remove(0).toString()+" was removed");
+		 */
 		viewObjects.remove(v);
+	}
+	
+	public void moveToBack(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(0,v); //add at a certain index
+		}
+	}
+	
+	public void moveToFront(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(v); //add at the end
+		}
 	}
 
 }
