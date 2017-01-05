@@ -27,24 +27,23 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 		player = getAPlayer();
 		label = new TextLabel(350,220,100,40,"Sample");
 		timeLabel = new TextLabel(360,40,80,40,"30.0");
-		
 		viewObjects.add(timeLabel);
 		viewObjects.add(label);
-		//viewObjects.add(player);
+		viewObjects.add(player);
 	}
 	
 	/**
 	*to implement later, after Character Team implements PlayerInterface
 	*/
 	private PlayerInterface getAPlayer() {
-		return null;
+		return new Player();
 	}
 
 	/**
 	*to implement later, after EnemyTeam implements MoleInterface
 	*/
 	private MoleInterface getAMole() {
-		return null;
+		return new Mole((int)Math.random()*getWidth(), (int)Math.random()*getHeight());
 	}
 	
 	public void run(){
