@@ -22,10 +22,11 @@ public class Player extends Component implements PlayerInterface {
 	@Override
 	public void update(Graphics2D g) {
 		//draws the circle and score everytime score updates
-		
+		g.setColor(new Color(200,200,255));
+		g.fillOval(0, 0, 99, 99);
 		g.setColor(Color.BLACK);
 		g.drawOval(0,0,99,99);
-		g.drawString("Score = "+score, 40, 45);
+		g.drawString("Score = "+score, 20, 55);
 	}
 
 }
