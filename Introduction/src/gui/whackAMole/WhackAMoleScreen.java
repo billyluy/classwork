@@ -17,6 +17,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 
 	public WhackAMoleScreen(int width, int height) {
 		super(width, height);
+		//when making Simon, creating a thread like this is necessary since simon's screen changes
 		timeLeft = 30.0; //init timeLeft
 		Thread play = new Thread(this);
 		play.start();
@@ -43,7 +44,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 	*to implement later, after EnemyTeam implements MoleInterface
 	*/
 	private MoleInterface getAMole() {
-		return new Mole((int)Math.random()*getWidth(), (int)Math.random()*getHeight());
+		return new Mole((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
 	}
 	
 	public void run(){
@@ -68,6 +69,9 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 			mole.setApperanceTime((int)(500+Math.random()*2000));
 			//tell the mole what to do when clicked
 			mole.setAction(new Action(){
+				//whenever simon is clicked this needs to run
+				//check if correct button
+				//light up the button/turn it back off
 				public void act(){
 					player.IncreaseScore(1);
 					remove(mole);
@@ -103,7 +107,8 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 		//*****must cast because computer stores in binary therefore when it represents it's not a clean conversion******
 		timeLabel.setText(""+(int)(timeLeft*10)/10.0);
 	}
-
+	
+	//USE THIS METHOD IN SIMON GAME
 	private void changeText(String string) {
 		label.setText(string);
 		try {
