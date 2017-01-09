@@ -13,9 +13,9 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 	
 	private ProgressInterfaceBillyLuy user;
 	private ArrayList<MoveInterfaceBillyLuy> order;
-	private ButtonInterface button;
+	private ButtonInterface[] button;
 	private int round;
-	private boolean correct;
+	private boolean acceptingInput;
 	private int orderIndex;
 	private int last;
 	private TextLabel label;
@@ -28,9 +28,15 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 	}
 
 	@Override
-	public void run() {
-		// TODO Auto-generated method stub
+	public void run(){
+	    label.setText("");
+	    nextRound();
+	}
 
+	private void nextRound() {
+		acceptingInput = false;
+		round++;
+		order.add(randomMove());
 	}
 
 	@Override
@@ -51,7 +57,18 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 	private MoveInterfaceBillyLuy randomMove() {
 		ButtonInterface b;
 		//code that randomly selects a ButtonInterfaceX
-		return getMove(b);
+		int rand = (int)(Math.random()*button.length);
+		//if its equal then pick a new
+		while(rand == last){
+			rand = (int) (Math.random()*button.length);
+		}
+		//change the last select into rand
+		last = rand;
+		/**
+		 * FIX LATER
+		 */
+		//return Move getMove(b);
+		return null;
 	}
 
 	/**
@@ -65,30 +82,49 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 	private void addButtons() {
 		int numberOfButtons = 5;
 		//colors
-		Color blue = Color.blue;
-		Color red = Color.red;
-		Color black = Color.black;
-		Color orange = Color.orange;
-		Color pink = Color.pink;
+		Color[] buttonColor = {Color.blue, Color.red,Color.black,Color.orange,Color.pink};
 		//place all buttons
 		for(int i =0; i < numberOfButtons; i++){
 			//b is an object that is a button interface
 			final ButtonInterface b = getAButton();
-			b.setColor(Color.GRAY);
+			b.setColor(buttonColor[i]);
 			b.setX(100+(i*20));
 			b.setY(100+(i*20));
 			b.setAction(new Action(){
 				public void act(){
-					if(correct){
+					if(acceptingInput){
 						Thread blink = new Thread(new Runnable(){
 							public void run(){
 								b.highlight();
+								try {
+									Thread.sleep(800);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								b.dim();
 							}
 						});
+						blink.start();
+						if(b == order.get(orderIndex).getButton()){
+							orderIndex++;
+						}else{
+							ProgressInterfaceBillyLuy.getOver();
+						}
+						if(orderIndex == order.size()){
+							Thread nextRound = new Thread(SimonScreenBillyLuy.this);
+							nextRound.start(); 
+						}
 					}
 				}
 			});
+			viewObjects.add(b);
 		}
+	}
+
+	private ButtonInterface getAButton() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
