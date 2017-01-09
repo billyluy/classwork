@@ -37,8 +37,31 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		acceptingInput = false;
 		round++;
 		order.add(randomMove());
-		ProgressInterfaceBillyLuy.setRound();
-		ProgressInterfaceBillyLuy.setSequenceSize();
+		ProgressInterfaceBillyLuy.setRound(round);
+		ProgressInterfaceBillyLuy.setSequenceSize(order.size());
+		changeText("Simon's turn");
+		label.setText("");
+		playSequence();
+		changeText("Your turn");
+		acceptingInput = true;
+		orderIndex = 0;
+	}
+
+	private void playSequence() {
+		ButtonInterface b = null;
+		for(int i =0; i<order.size();i++){
+			if(b != null){
+				b.dim();
+			}
+			b = ((ButtonInterface)order).getButton();
+			b.highlight();
+			try {
+				Thread.sleep((long)(2000*(2.0/(round+2))));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		b.dim();
 	}
 
 	@Override
@@ -73,13 +96,6 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		return null;
 	}
 
-	/**
-	 * FOR PARTNER TO DO
-	 */
-	private ProgressInterfaceBillyLuy getProgress() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	private void addButtons() {
 		int numberOfButtons = 5;
@@ -123,10 +139,29 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 			viewObjects.add(b);
 		}
 	}
+	
+	private void changeText(String string) {
+		try{
+			label.setText(string);
+			Thread.sleep(1000);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
+	/**
+	 * FOR PARTNER TO FINSISH
+	 */
+	private ProgressInterfaceBillyLuy getProgress() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * FOR PARTNER TO FINSISH
+	 */
 	private ButtonInterface getAButton() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
