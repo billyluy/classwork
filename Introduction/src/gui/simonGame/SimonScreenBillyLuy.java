@@ -37,6 +37,8 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		acceptingInput = false;
 		round++;
 		order.add(randomMove());
+		ProgressInterfaceBillyLuy.setRound();
+		ProgressInterfaceBillyLuy.setSequenceSize();
 	}
 
 	@Override
