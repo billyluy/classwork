@@ -92,10 +92,14 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		/**
 		 * FIX LATER
 		 */
-		//return Move getMove(b);
-		return null;
+		b = button[rand];
+		return getAMove(b);
 	}
 
+
+	private MoveInterfaceBillyLuy getAMove(ButtonInterface b) {
+		return null;
+	}
 
 	private void addButtons() {
 		int numberOfButtons = 5;
@@ -107,7 +111,7 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 			final ButtonInterface b = getAButton();
 			b.setColor(buttonColor[i]);
 			b.setX(100+(i*20));
-			b.setY(100+(i*20));
+			b.setY(300);
 			b.setAction(new Action(){
 				public void act(){
 					if(acceptingInput){

@@ -1,4 +1,4 @@
-package GUISampleGame;
+package gui.SampleGame;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;

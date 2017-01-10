@@ -1,4 +1,4 @@
-package GUISampleGame;
+package gui.SampleGame;
 
 import java.util.ArrayList;
 

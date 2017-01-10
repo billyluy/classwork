@@ -1,4 +1,4 @@
-package GUISampleGame;
+package gui.SampleGame;
 
 import gui.GUIApplication;
 import gui.Screens.CoordinateScreen;

@@ -6,8 +6,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
-import GUISampleGame.MouseFollower;
 import gui.Screen;
+import gui.SampleGame.MouseFollower;
 import gui.components.Action;
 import gui.components.Button;
 import gui.components.Graphic;
