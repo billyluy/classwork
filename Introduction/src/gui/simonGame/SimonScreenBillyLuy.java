@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import gui.components.Action;
 import gui.components.ClickableScreen;
 import gui.components.TextLabel;
+import gui.components.TextMultiLines;
 import gui.components.Visible;
+import gui.simonGame.Progress;
 
 public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 
@@ -86,15 +88,18 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 	}
 
 	public void gameOver() {
-		ProgressInterfaceBillyLuy.gameOver();
+		Progress.gameOver();
 	}
 
 	public void nextRound() {
+		System.out.println("I am here");
 		acceptingInput = false;
-		roundNumber ++;
-		ProgressInterfaceBillyLuy.setRound(roundNumber);
+		roundNumber++;
+		Progress.setRound(roundNumber);
+		System.out.println("I set round to "+roundNumber);
 		sequence.add(randomMove());
-		ProgressInterfaceBillyLuy.setSequenceSize(sequence.size());
+		Progress.setSequenceLength(sequence.size());
+		System.out.println("I set sequence to "+sequence);
 		changeText("Simon's turn");
 		label.setText("");
 		playSequence();
