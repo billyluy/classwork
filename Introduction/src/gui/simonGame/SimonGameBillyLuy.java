@@ -18,7 +18,7 @@ public class SimonGameBillyLuy extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		SimonGameBillyLuy simonGame = new SimonGameBillyLuy(800,500); //instantiate
+		SimonGameBillyLuy simonGame = new SimonGameBillyLuy(1000,1000); //instantiate
 		Thread game = new Thread(simonGame); //create thread for game
 		game.start(); //start the thread/game
 	}
