@@ -7,7 +7,6 @@ import gui.components.Action;
 import gui.components.ClickableScreen;
 import gui.components.TextLabel;
 import gui.components.Visible;
-import gui.whackAMole.MoleInterface;
 
 public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 	
@@ -47,23 +46,6 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		orderIndex = 0;
 	}
 
-	private void playSequence() {
-		ButtonInterface b = null;
-		for(int i =0; i<order.size();i++){
-			if(b != null){
-				b.dim();
-			}
-			b = ((ButtonInterface)order).getButton();
-			b.highlight();
-			try {
-				Thread.sleep((long)(2000*(2.0/(round+2))));
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		b.dim();
-	}
-
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		addButtons();
@@ -77,28 +59,6 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		order.add(randomMove());
 		viewObjects.add(progress);
 		viewObjects.add(label);
-	}
-	
-	private MoveInterfaceBillyLuy randomMove() {
-		ButtonInterface b;
-		//code that randomly selects a ButtonInterfaceX
-		int rand = (int)(Math.random()*button.length);
-		//if its equal then pick a new
-		while(rand == last){
-			rand = (int) (Math.random()*button.length);
-		}
-		//change the last select into rand
-		last = rand;
-		/**
-		 * FIX LATER
-		 */
-		b = button[rand];
-		return getAMove(b);
-	}
-
-
-	private MoveInterfaceBillyLuy getAMove(ButtonInterface b) {
-		return null;
 	}
 
 	private void addButtons() {
@@ -144,6 +104,34 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		}
 	}
 	
+	private MoveInterfaceBillyLuy randomMove() {
+		ButtonInterface b;
+		int rand = (int)(Math.random()*button.length);
+		while(rand == last){
+			rand = (int) (Math.random()*button.length);
+		}
+		last = rand;
+		b = button[rand];
+		return getAMove(b);
+	}
+	
+	private void playSequence() {
+		ButtonInterface b = null;
+		for(int i =0; i<order.size();i++){
+			if(b != null){
+				b.dim();
+			}
+			b = ((ButtonInterface)order).getButton();
+			b.highlight();
+			try {
+				Thread.sleep((long)(2000*(2.0/(round+2))));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		b.dim();
+	}
+	
 	private void changeText(String string) {
 		try{
 			label.setText(string);
@@ -152,20 +140,16 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * FOR PARTNER TO FINSISH
-	 */
-	private ProgressInterfaceBillyLuy getProgress() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private MoveInterfaceBillyLuy getAMove(ButtonInterface b) {
+		return new Move(b);
 	}
 	
-	/**
-	 * FOR PARTNER TO FINSISH
-	 */
+	private ProgressInterfaceBillyLuy getProgress() {
+		return new Progress();
+	}
+	
 	private ButtonInterface getAButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Button();
 	}
 }

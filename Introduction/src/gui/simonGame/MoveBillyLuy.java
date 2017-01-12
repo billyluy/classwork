@@ -6,4 +6,10 @@ public class MoveBillyLuy implements MoveInterfaceBillyLuy {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public ButtonInterface getButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

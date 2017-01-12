@@ -101,4 +101,10 @@ public class ButtonBillyLuy implements ButtonInterface {
 
 	}
 
+	@Override
+	public ButtonInterface getButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
