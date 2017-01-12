@@ -2,6 +2,7 @@ package gui.simonGame;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class Button extends Component implements ButtonInterface {
 
 	@Override
 	public void act() {
-//		Action.act();
+		action.act();
 	}
 
 	@Override
@@ -84,11 +85,5 @@ public class Button extends Component implements ButtonInterface {
 	public void setY(int i) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public ButtonInterface getButton() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

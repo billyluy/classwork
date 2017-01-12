@@ -1,6 +1,7 @@
 package gui.simonGame;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 
 import gui.components.Action;
@@ -91,7 +92,7 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 						if(b == order.get(orderIndex).getButton()){
 							orderIndex++;
 						}else{
-							ProgressInterfaceBillyLuy.getOver();
+							ProgressInterfaceBillyLuy.gameOver();
 						}
 						if(orderIndex == order.size()){
 							Thread nextRound = new Thread(SimonScreenBillyLuy.this);
@@ -108,7 +109,7 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 		ButtonInterface b;
 		int rand = (int)(Math.random()*button.length);
 		while(rand == last){
-			rand = (int) (Math.random()*button.length);
+			rand = (int)(Math.random()*button.length);
 		}
 		last = rand;
 		b = button[rand];
@@ -116,12 +117,24 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable {
 	}
 	
 	private void playSequence() {
+//		ButtonInterface b = null;
+//		for(int i =0; i<order.size();i++){
+//			if(b != null){
+//				b.dim();
+//			}
+//			b = ((ButtonInterface)order).getButton();
+//			b.highlight();
+//			try {
+//				Thread.sleep((long)(2000*(2.0/(round+2))));
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		b.dim();
 		ButtonInterface b = null;
-		for(int i =0; i<order.size();i++){
-			if(b != null){
-				b.dim();
-			}
-			b = ((ButtonInterface)order).getButton();
+		for(MoveInterfaceBillyLuy m: order){
+			if(b!=null)b.dim();
+			b = m.getButton();
 			b.highlight();
 			try {
 				Thread.sleep((long)(2000*(2.0/(round+2))));
