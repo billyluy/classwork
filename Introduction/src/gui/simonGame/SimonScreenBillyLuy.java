@@ -88,18 +88,15 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 	}
 
 	public void gameOver() {
-		Progress.gameOver();
+		progress.gameOver();
 	}
 
 	public void nextRound() {
-		System.out.println("I am here");
 		acceptingInput = false;
 		roundNumber++;
-		Progress.setRound(roundNumber);
-		System.out.println("I set round to "+roundNumber);
+		progress.setRound(roundNumber);
 		sequence.add(randomMove());
-		Progress.setSequenceLength(sequence.size());
-		System.out.println("I set sequence to "+sequence);
+		progress.setSequenceLength(sequence.size());
 		changeText("Simon's turn");
 		label.setText("");
 		playSequence();
