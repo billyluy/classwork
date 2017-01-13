@@ -73,7 +73,6 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 							sequenceIndex++;
 						}else if(acceptingInput){
 							//error with statement?
-							System.out.println("why");
 							gameOver();
 							return;
 						}
