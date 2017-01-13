@@ -61,7 +61,7 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 							public void run() {
 								b.highlight();
 								try {
-									Thread.sleep(500);
+									Thread.sleep(400);
 								} catch (InterruptedException e) {
 									e.printStackTrace();
 								}
@@ -69,16 +69,15 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 							}
 						});
 						buttonPress.start();
-						if(acceptingInput && sequence.get(sequenceIndex).getButton() == b){
-							sequenceIndex++;
-						}else if(acceptingInput){
-							//error with statement?
+						if(b == (sequence.get(sequenceIndex).getButton())) {
+							sequenceIndex ++;
+							acceptingInput = true;
+							if(sequence.size() == sequenceIndex) {
+								Thread nextRound = new Thread(SimonScreenBillyLuy.this);
+								nextRound.start(); 
+							}
+						}else {
 							gameOver();
-							return;
-						}
-						if(sequenceIndex == sequence.size()){
-							Thread nextRound = new Thread(SimonScreenBillyLuy.this);
-							nextRound.start();
 						}
 					}
 
