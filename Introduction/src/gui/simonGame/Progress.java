@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import gui.components.Component;
 
-
 public class Progress extends Component implements ProgressInterfaceBillyLuy {
 	
 	private String round;

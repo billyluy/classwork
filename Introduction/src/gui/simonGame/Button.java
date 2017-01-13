@@ -24,7 +24,9 @@ public class Button extends Component implements ButtonInterface {
 	}
 
 	public boolean isHovered(int x, int y) {
-		return x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight();
+//		return x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight();
+		double distance = Math.sqrt(Math.pow(x-(getX()+WIDTH/2), 2)+Math.pow(y-(getY()+HEIGHT/2), 2));
+		return distance < WIDTH/2;
 	}
 
 	public void act() {

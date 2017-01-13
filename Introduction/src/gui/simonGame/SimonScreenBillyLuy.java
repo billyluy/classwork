@@ -58,7 +58,6 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 			buttons[i].setAction(new Action() {
 				public void act() {
 						Thread buttonPress = new Thread(new Runnable() {
-							
 							public void run() {
 								b.highlight();
 								try {
@@ -73,6 +72,8 @@ public class SimonScreenBillyLuy extends ClickableScreen implements Runnable{
 						if(acceptingInput && sequence.get(sequenceIndex).getButton() == b){
 							sequenceIndex++;
 						}else if(acceptingInput){
+							//error with statement?
+							System.out.println("why");
 							gameOver();
 							return;
 						}
